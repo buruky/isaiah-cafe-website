@@ -1,0 +1,23 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"main": ".open-next/worker.js",
+	// Must match the project name in the Cloudflare dashboard.
+	"name": "isaiah-cafe-website",
+	"compatibility_date": "2026-10-01",
+	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+	"assets": {
+		"directory": ".open-next/assets",
+		"binding": "ASSETS"
+	},
+	"services": [
+		{
+			// Self-reference used by OpenNext; name must match the worker name.
+			"binding": "WORKER_SELF_REFERENCE",
+			"service": "isaiah-cafe-website"
+		}
+	],
+	"images": {
+		// Cloudflare Images resizes next/image requests (free tier: 5,000 transformations/month).
+		"binding": "IMAGES"
+	}
+}

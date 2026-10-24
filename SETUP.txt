@@ -52,20 +52,18 @@ see .env.example for every option.
 
 PRODUCTION BUILD & HOSTING
 --------------------------
-The project uses Next.js "standalone" output, so production does NOT use
-`npm start`. Build, copy in the static files, then run the bundled server:
+Hosted on Cloudflare Workers via the OpenNext adapter (@opennextjs/cloudflare).
+Config lives in wrangler.jsonc and open-next.config.ts. Cloudflare builds and
+deploys automatically on every push to the GitHub repo, using:
 
-  npm run build
-  cp -r public .next/standalone/public
-  cp -r .next/static .next/standalone/.next/static
-  PORT=3000 node .next/standalone/server.js
+  Build command:   npx opennextjs-cloudflare build
+  Deploy command:  npx wrangler deploy
 
-The .next/standalone folder is self-contained; copy it to the server and run
-it with Node (e.g. under systemd or pm2), with the SMTP environment variables
-set. Put a web server such as Nginx or Caddy in front of it for HTTPS.
+To test the Cloudflare build locally:  npx opennextjs-cloudflare preview
 
-The site can also be deployed to Node-capable hosts like Vercel or Netlify,
-which handle the build automatically.
+Environment variables are set in the Cloudflare dashboard (Worker > Settings >
+Variables and Secrets), not in .env files. Images are resized by Cloudflare
+Images through the IMAGES binding in wrangler.jsonc.
 
 
 BEFORE GO-LIVE
