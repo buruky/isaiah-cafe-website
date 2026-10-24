@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/*  Isaiah Café — "Mocha Brown" design tokens                          */
+/*  Warm, editorial, refined café identity. Light content surfaces     */
+/*  with deep espresso dark sections and a single roasted-bronze accent */
+/* ------------------------------------------------------------------ */
+@theme {
+  --color-espresso: #23140e;
+  --color-espresso-deep: #1a0f0a;
+  --color-alabaster: #fbf9f6;
+  --color-bronze: #c59b6d;
+  --color-bronze-deep: #a67c4e;
+  --color-walnut: #2d1a12;
+  --color-walnut-soft: #5a463c;
+  --color-cream: #efebe4;
+  --color-cream-dim: #c9bfb2;
+  --color-line: #e7ded3;
+
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-body: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-card: 0 1px 2px rgba(45, 26, 18, 0.04),
+    0 18px 40px -24px rgba(45, 26, 18, 0.35);
+  --shadow-float: 0 24px 60px -30px rgba(26, 15, 10, 0.55);
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Base                                                               */
+/* ------------------------------------------------------------------ */
+@layer base {
+  html {
+    /* No smooth scrolling: it makes the App Router's scroll-to-top on every
+       route change visibly animate. There are no in-page anchor links. */
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-alabaster);
+    color: var(--color-walnut);
+    font-family: var(--font-body);
+    font-feature-settings: "ss01", "cv01";
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background-color: var(--color-bronze);
+    color: var(--color-espresso-deep);
+  }
+
+  /* Bronze focus ring for keyboard users */
+  :focus-visible {
+    outline: 2px solid var(--color-bronze);
+    outline-offset: 3px;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Utilities                                                          */
+/* ------------------------------------------------------------------ */
+
+/* Eyebrow / caption with the brand's wide tracking */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+/* Subtle paper grain layered over dark sections for depth */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Rich-text blocks rendered from content data */
+.prose-cafe p {
+  margin-bottom: 1rem;
+  line-height: 1.75;
+}
+.prose-cafe p:last-child {
+  margin-bottom: 0;
+}
+.prose-cafe em {
+  font-style: italic;
+  color: var(--color-bronze-deep);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Scroll reveal (progressively enhanced — visible by default)        */
+/* ------------------------------------------------------------------ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s var(--ease-out-soft),
+    transform 0.9s var(--ease-out-soft);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .marquee__track {
+    animation: none !important;
+  }
+}
+
+/* Announcement marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee__track {
+  animation: marquee 28s linear infinite;
+}
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Hero ken-burns drift */
+@keyframes slow-zoom {
+  from {
+    transform: scale(1.06);
+  }
+  to {
+    transform: scale(1.16);
+  }
+}
+.slow-zoom {
+  animation: slow-zoom 18s ease-out forwards;
+}

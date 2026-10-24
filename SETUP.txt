@@ -1,0 +1,76 @@
+ISAIAH CAFÉ WEBSITE — DEVELOPER SETUP
+=====================================
+
+Marketing website for Isaiah Café (Calgary, AB). No e-commerce.
+
+Stack: Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4,
+lucide-react (icons), nodemailer (form emails).
+
+
+REQUIREMENTS
+------------
+- Node.js 20.9 or newer (22 LTS recommended)
+- npm (comes with Node)
+
+
+RUN LOCALLY
+-----------
+  npm install
+  cp .env.example .env.local
+  npm run dev
+
+Then open http://localhost:3000
+
+
+WHERE THINGS LIVE
+-----------------
+  src/lib/site.ts        Business facts: name, address, phone, email, hours,
+                         social links, site URL. Edit these here only.
+  src/lib/content.ts     All page text, team bios, menu, coffee line-up.
+  src/app/               Pages (one folder per route) and API routes.
+  src/components/        Layout (header/footer), page sections, UI pieces.
+  src/app/globals.css    Colours, fonts and other design tokens.
+  public/assets/         Images, logo and the home-page hero video.
+
+Pages: /  /about  /menu  /catering  /contact  /privacy
+
+
+CONTACT & NEWSLETTER FORMS
+--------------------------
+Both forms post to API routes (src/app/api/contact, src/app/api/newsletter)
+that send email through an SMTP server. Settings are environment variables;
+see .env.example for every option.
+
+- If SMTP_HOST is blank, the forms run in "log-only" mode: submissions are
+  accepted and printed to the server log, but no email is sent.
+- To send real email, set SMTP_HOST, SMTP_PORT, SMTP_SECURE, and (if your
+  mail provider needs them) SMTP_USER / SMTP_PASS. MAIL_TO is where
+  submissions go; MAIL_FROM should be an address on a domain you control so
+  the mail isn't marked as spam.
+- Never commit .env.local or .env files; they hold credentials.
+
+
+PRODUCTION BUILD & HOSTING
+--------------------------
+The project uses Next.js "standalone" output, so production does NOT use
+`npm start`. Build, copy in the static files, then run the bundled server:
+
+  npm run build
+  cp -r public .next/standalone/public
+  cp -r .next/static .next/standalone/.next/static
+  PORT=3000 node .next/standalone/server.js
+
+The .next/standalone folder is self-contained; copy it to the server and run
+it with Node (e.g. under systemd or pm2), with the SMTP environment variables
+set. Put a web server such as Nginx or Caddy in front of it for HTTPS.
+
+The site can also be deployed to Node-capable hosts like Vercel or Netlify,
+which handle the build automatically.
+
+
+BEFORE GO-LIVE
+--------------
+- Set SITE.url in src/lib/site.ts to the final domain. It drives canonical
+  URLs, social-share previews, the sitemap and search-engine data.
+- The map coordinates (SITE.geo in src/lib/site.ts) are approximate; the map
+  pin itself uses the street address, so it is accurate either way.
