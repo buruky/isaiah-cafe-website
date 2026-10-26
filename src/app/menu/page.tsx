@@ -26,7 +26,9 @@ export default function MenuPage() {
       <div className="mx-auto max-w-6xl space-y-24 px-5 py-24 sm:space-y-28 sm:px-8 sm:py-28">
         {SITE.orderUrl && (
           <div className="flex justify-center">
-            <Button href={SITE.orderUrl}>Order Pickup</Button>
+            <Button href={SITE.orderUrl} target="_blank" rel="noopener noreferrer">
+              Order Pickup
+            </Button>
           </div>
         )}
 

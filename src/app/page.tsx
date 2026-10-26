@@ -22,8 +22,13 @@ export default function HomePage() {
         size="full"
         zoom
       >
-        {/* shortcut: falls back to /menu until the Square Online page exists */}
-        <Button href={SITE.orderUrl || "/menu"} variant="solid" tone="light">
+        <Button
+          href={SITE.orderUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="solid"
+          tone="light"
+        >
           Order Pickup
         </Button>
         <Button href="/catering" variant="outline" tone="light">
