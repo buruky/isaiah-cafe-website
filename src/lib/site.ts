@@ -10,12 +10,14 @@ export const SITE = {
   legalName: "Isaiah Café",
   tagline: "community · culture · quality",
   // Domain is planned but not yet live; used for metadata canonical + JSON-LD.
-  url: "https://isaiahcafe.ca",
+  url: "https://isaiahcafe.com",
   description:
     "Calgary's newest breakfast & bakery café — specialty Aggüdo coffee, fresh daily baking, and full-service catering, rooted in community.",
   email: "hello@isaiahcafe.com",
   phone: "403.816.8159",
   phoneE164: "+14038168159",
+  // Square Online pickup ordering page. Order buttons stay hidden while blank.
+  orderUrl: "",
   address: {
     street: "101 19th Street NW",
     locality: "Calgary",

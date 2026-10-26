@@ -6,6 +6,7 @@ import StorySnippet from "@/components/sections/StorySnippet";
 import Newsletter from "@/components/sections/Newsletter";
 import Button from "@/components/ui/Button";
 import { HOME } from "@/lib/content";
+import { SITE } from "@/lib/site";
 
 export default function HomePage() {
   return (
@@ -21,7 +22,11 @@ export default function HomePage() {
         size="full"
         zoom
       >
-        <Button href="/catering" variant="solid" tone="light">
+        {/* shortcut: falls back to /menu until the Square Online page exists */}
+        <Button href={SITE.orderUrl || "/menu"} variant="solid" tone="light">
+          Order Pickup
+        </Button>
+        <Button href="/catering" variant="outline" tone="light">
           Catering
         </Button>
         <Button href="/about" variant="outline" tone="light">
