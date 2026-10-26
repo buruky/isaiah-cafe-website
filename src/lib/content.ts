@@ -28,8 +28,14 @@ export type TeamMember = {
 };
 
 export const HOME = {
-  // Client-editable via Pages CMS (.pages.yml).
-  hero: homeHero,
+  hero: {
+    // Client-editable via Pages CMS (.pages.yml).
+    ...homeHero,
+    // Locked: brand pieces the client shouldn't change from the admin.
+    eyebrow: "community · culture · quality",
+    video: "/assets/hero-home.mp4",
+    videoPoster: "/assets/hero-home-poster.jpg",
+  },
   intro: {
     heading: "Breakfast & Bakery, Rooted in Community",
     body: "Isaiah Café is Calgary's newest breakfast and bakery destination — a place where every morning starts with a warm welcome, exceptional coffee and great food.",

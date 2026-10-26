@@ -1,7 +1,9 @@
 # Pages CMS config (https://pagescms.org/docs). Defines what the client can edit.
+# Anything not listed here (video, logo, layout, colours, nav) is locked in code.
 media:
   input: public/assets
   output: /assets
+  extensions: [jpg, jpeg, png, webp]
 
 content:
   - name: home-hero
@@ -9,13 +11,25 @@ content:
     type: file
     path: src/content/home-hero.json
     fields:
-      - { name: eyebrow, label: Small text above heading, type: string }
-      - { name: heading, label: Heading, type: string, required: true }
-      - { name: body, label: Intro text, type: text }
-      - { name: image, label: Image, type: image }
-      - { name: imageAlt, label: Image description (for screen readers), type: string }
-      - { name: video, label: Background video, type: file }
-      - { name: videoPoster, label: Video placeholder image, type: image }
+      - name: heading
+        label: Heading
+        type: string
+        required: true
+        options: { maxlength: 40 }
+      - name: body
+        label: Intro text
+        type: text
+        required: true
+        options: { maxlength: 220 }
+      - name: image
+        label: Image (shown if the video can't play)
+        type: image
+        required: true
+      - name: imageAlt
+        label: Describe the image in a sentence (for blind visitors and Google)
+        type: string
+        required: true
+        options: { maxlength: 125 }
 
   - name: events
     label: Events
@@ -27,9 +41,9 @@ content:
         type: object
         list: true
         fields:
-          - { name: title, label: Title, type: string, required: true }
+          - { name: title, label: Title, type: string, required: true, options: { maxlength: 60 } }
           - { name: date, label: Date, type: date, required: true, options: { format: "yyyy-MM-dd" } }
-          - { name: time, label: Time (e.g. 10AM – 12PM), type: string }
-          - { name: image, label: Image, type: image }
-          - { name: imageAlt, label: Image description, type: string }
-          - { name: description, label: Description, type: text }
+          - { name: time, label: Time (e.g. 10AM – 12PM), type: string, options: { maxlength: 30 } }
+          - { name: image, label: Image, type: image, required: true }
+          - { name: imageAlt, label: Describe the image in a sentence, type: string, required: true, options: { maxlength: 125 } }
+          - { name: description, label: Description, type: text, required: true, options: { maxlength: 400 } }
