@@ -29,7 +29,7 @@ export default function HomePage() {
           variant="solid"
           tone="light"
         >
-          Order Pickup
+          Order Online
         </Button>
         <Button href="/catering" variant="outline" tone="light">
           Catering

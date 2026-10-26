@@ -50,7 +50,7 @@ export default function CoffeeShowcase() {
           <p className="text-sm tracking-wide text-walnut-soft">
             Roasted by{" "}
             <span className="font-semibold text-bronze-deep">Aggüdo Coffee</span> in
-            Calgary · available in-store
+            Calgary · available in-store, for delivery and shipping
           </p>
         </Reveal>
       </div>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import CoffeeShowcase from "@/components/sections/CoffeeShowcase";
 import Hero from "@/components/sections/Hero";
 import MenuSection from "@/components/sections/MenuSection";
 import Button from "@/components/ui/Button";
@@ -27,7 +28,7 @@ export default function MenuPage() {
         {SITE.orderUrl && (
           <div className="flex justify-center">
             <Button href={SITE.orderUrl} target="_blank" rel="noopener noreferrer">
-              Order Pickup
+              Order Online
             </Button>
           </div>
         )}
@@ -51,8 +52,10 @@ export default function MenuPage() {
         </p>
       </div>
 
+      <CoffeeShowcase />
+
       {/* Catering cross-link */}
-      <section className="bg-cream/40 py-20 sm:py-24">
+      <section className="py-20 sm:py-24">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <p className="eyebrow text-bronze-deep">Events &amp; Gatherings</p>
           <h2 className="mt-4 font-display text-3xl text-walnut sm:text-4xl">

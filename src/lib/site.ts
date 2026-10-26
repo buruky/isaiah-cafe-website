@@ -16,7 +16,7 @@ export const SITE = {
   email: "hello@isaiahcafe.com",
   phone: "403.816.8159",
   phoneE164: "+14038168159",
-  // Square Online pickup ordering page. Order buttons stay hidden while blank.
+  // Square Online ordering page (pickup, delivery, shipping). Order buttons stay hidden while blank.
   orderUrl: "https://isaiahcafe.square.site/",
   address: {
     street: "101 19th Street NW",
@@ -32,6 +32,7 @@ export const SITE = {
   hours: [
     { days: "Mon – Fri", time: "7AM – 6PM" },
     { days: "Sat – Sun", time: "8AM – 6PM" },
+    { days: "Stat Holidays", time: "8AM – 4PM" },
   ],
   social: {
     // Confirmed handle from theme settings_data.json

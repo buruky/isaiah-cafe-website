@@ -69,7 +69,7 @@ export default function Header() {
               rel="noopener noreferrer"
               className="rounded-full bg-walnut px-5 py-2 text-sm font-semibold tracking-wide text-cream transition-colors hover:bg-espresso"
             >
-              Order Pickup
+              Order Online
             </a>
           )}
         </div>
@@ -118,7 +118,7 @@ export default function Header() {
                 rel="noopener noreferrer"
                 className="mt-6 block rounded-full bg-walnut py-4 text-center text-lg font-semibold text-cream"
               >
-                Order Pickup
+                Order Online
               </a>
             </li>
           )}
