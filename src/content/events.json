@@ -1,0 +1,20 @@
+{
+  "events": [
+    {
+      "title": "Sample: Ethiopian Coffee Ceremony",
+      "date": "2026-11-14",
+      "time": "10AM – 12PM",
+      "image": "/assets/home-coffee.jpg",
+      "imageAlt": "Freshly brewed Isaiah Café coffee",
+      "description": "Sample event — replace or delete this from the admin. Join us for a traditional coffee ceremony featuring our Guji and Yirgacheffe beans."
+    },
+    {
+      "title": "Sample: Holiday Bake Sale",
+      "date": "2026-12-12",
+      "time": "8AM – 2PM",
+      "image": "/assets/home-story.jpg",
+      "imageAlt": "Fresh pastries at the Isaiah Café counter",
+      "description": "Sample event — replace or delete this from the admin. Seasonal bakes, gift bags and coffee to take home."
+    }
+  ]
+}

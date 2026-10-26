@@ -8,6 +8,12 @@
  * it is hand-ticked per bag, not printed. Presented informationally, no CTAs.
  */
 
+import homeHero from "@/content/home-hero.json";
+import eventsFile from "@/content/events.json";
+
+export type CafeEvent = (typeof eventsFile.events)[number];
+export const EVENTS: CafeEvent[] = eventsFile.events;
+
 /** A person on the About-page roster. `title` and `funFact` are optional. */
 export type TeamMember = {
   name: string;
@@ -22,15 +28,8 @@ export type TeamMember = {
 };
 
 export const HOME = {
-  hero: {
-    eyebrow: "community · culture · quality",
-    heading: "Isaiah Café",
-    body: "Calgary's newest breakfast and bakery destination — a place where every morning starts with a warm welcome, exceptional coffee and great food.",
-    image: "/assets/hero-home.jpg",
-    imageAlt: "Barista pulling espresso at the Isaiah Café counter in Calgary",
-    video: "/assets/hero-home.mp4",
-    videoPoster: "/assets/hero-home-poster.jpg",
-  },
+  // Client-editable via Pages CMS (.pages.yml).
+  hero: homeHero,
   intro: {
     heading: "Breakfast & Bakery, Rooted in Community",
     body: "Isaiah Café is Calgary's newest breakfast and bakery destination — a place where every morning starts with a warm welcome, exceptional coffee and great food.",

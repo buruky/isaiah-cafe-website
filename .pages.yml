@@ -1,0 +1,35 @@
+# Pages CMS config (https://pagescms.org/docs). Defines what the client can edit.
+media:
+  input: public/assets
+  output: /assets
+
+content:
+  - name: home-hero
+    label: Home – Top Banner
+    type: file
+    path: src/content/home-hero.json
+    fields:
+      - { name: eyebrow, label: Small text above heading, type: string }
+      - { name: heading, label: Heading, type: string, required: true }
+      - { name: body, label: Intro text, type: text }
+      - { name: image, label: Image, type: image }
+      - { name: imageAlt, label: Image description (for screen readers), type: string }
+      - { name: video, label: Background video, type: file }
+      - { name: videoPoster, label: Video placeholder image, type: image }
+
+  - name: events
+    label: Events
+    type: file
+    path: src/content/events.json
+    fields:
+      - name: events
+        label: Events
+        type: object
+        list: true
+        fields:
+          - { name: title, label: Title, type: string, required: true }
+          - { name: date, label: Date, type: date, required: true, options: { format: "yyyy-MM-dd" } }
+          - { name: time, label: Time (e.g. 10AM – 12PM), type: string }
+          - { name: image, label: Image, type: image }
+          - { name: imageAlt, label: Image description, type: string }
+          - { name: description, label: Description, type: text }
