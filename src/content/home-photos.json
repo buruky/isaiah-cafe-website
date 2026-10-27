@@ -1,0 +1,14 @@
+{
+  "catering": {
+    "image": "/assets/uploads/home-catering.jpg",
+    "imageAlt": "Tray of freshly baked cinnamon rolls at Isaiah Café"
+  },
+  "coffee": {
+    "image": "/assets/uploads/home-coffee.jpg",
+    "imageAlt": "Espresso pulling into shot glasses at Isaiah Café"
+  },
+  "story": {
+    "image": "/assets/uploads/home-story.jpg",
+    "imageAlt": "The counter and espresso bar inside Isaiah Café"
+  }
+}

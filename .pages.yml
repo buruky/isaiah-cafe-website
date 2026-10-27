@@ -35,6 +35,30 @@ content:
         required: true
         options: { maxlength: 125 }
 
+  - name: home-photos
+    label: Home – Photos
+    type: file
+    path: src/content/home-photos.json
+    fields:
+      - name: catering
+        label: Catering section (“Catering by Isaiah Café”)
+        type: object
+        fields:
+          - { name: image, label: Photo, description: A slightly wide (landscape) photo works best., type: image, required: true }
+          - { name: imageAlt, label: Describe the photo in a sentence (for blind visitors and Google), type: string, required: true, options: { maxlength: 125 } }
+      - name: coffee
+        label: Coffee beans section (“Take Home”)
+        type: object
+        fields:
+          - { name: image, label: Photo, description: A slightly wide (landscape) photo works best., type: image, required: true }
+          - { name: imageAlt, label: Describe the photo in a sentence (for blind visitors and Google), type: string, required: true, options: { maxlength: 125 } }
+      - name: story
+        label: Our Story section (“Born from a dream”)
+        type: object
+        fields:
+          - { name: image, label: Photo, description: Shown dimmed behind the text — a wide photo works best., type: image, required: true }
+          - { name: imageAlt, label: Describe the photo in a sentence (for blind visitors and Google), type: string, required: true, options: { maxlength: 125 } }
+
   - name: events
     label: Events
     type: file

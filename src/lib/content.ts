@@ -10,6 +10,7 @@
 
 import homeHero from "@/content/home-hero.json";
 import eventsFile from "@/content/events.json";
+import homePhotos from "@/content/home-photos.json";
 
 export type CafeEvent = (typeof eventsFile.events)[number];
 export const EVENTS: CafeEvent[] = eventsFile.events;
@@ -69,8 +70,7 @@ export const HOME = {
       eyebrow: "Events & Gatherings",
       heading: "Catering by Isaiah Café",
       body: "From intimate brunches to large corporate events — we bring the Isaiah Café experience to you. Fresh food, specialty coffee, and flawless service.",
-      image: "/assets/home-catering.jpg",
-      imageAlt: "Tray of freshly baked cinnamon rolls at Isaiah Café",
+      ...homePhotos.catering, // client-editable via Pages CMS
       imagePosition: "left" as const,
       cta: { label: "Learn More", href: "/catering" },
     },
@@ -78,8 +78,7 @@ export const HOME = {
       eyebrow: "Take Home",
       heading: "Aggüdo Coffee Beans",
       body: "We proudly serve and pour Aggüdo Coffee — locally roasted in Calgary, with blends ranging from light cold brew to dark espresso roasts.",
-      image: "/assets/home-coffee.jpg",
-      imageAlt: "Espresso pulling into shot glasses at Isaiah Café",
+      ...homePhotos.coffee, // client-editable via Pages CMS
       imagePosition: "right" as const,
       cta: { label: "Our Story", href: "/about" },
     },
@@ -89,8 +88,7 @@ export const HOME = {
     heading: "Born from a dream",
     body: "Isaiah Café was born from a dream — a legacy of compassion, community, and genuine care for people. Every cup we serve carries that story forward.",
     cta: { label: "Read Our Story", href: "/about" },
-    image: "/assets/home-story.jpg",
-    imageAlt: "The counter and espresso bar inside Isaiah Café",
+    ...homePhotos.story, // client-editable via Pages CMS
   },
   newsletter: {
     heading: "Stay in the Loop",
