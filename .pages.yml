@@ -1,8 +1,9 @@
 # Pages CMS config (https://pagescms.org/docs). Defines what the client can edit.
 # Anything not listed here (video, logo, layout, colours, nav) is locked in code.
 media:
-  input: public/assets
-  output: /assets
+  # Own folder so the media manager can't delete or replace the site's built-in images/video.
+  input: public/assets/uploads
+  output: /assets/uploads
   extensions: [jpg, jpeg, png, webp]
 
 content:
@@ -13,16 +14,19 @@ content:
     fields:
       - name: heading
         label: Heading
+        description: The big title at the top of the home page.
         type: string
         required: true
         options: { maxlength: 40 }
       - name: body
         label: Intro text
+        description: One or two short sentences under the title.
         type: text
         required: true
         options: { maxlength: 220 }
       - name: image
         label: Image (shown if the video can't play)
+        description: A wide (landscape) photo works best.
         type: image
         required: true
       - name: imageAlt
@@ -38,12 +42,13 @@ content:
     fields:
       - name: events
         label: Events
+        description: Past events hide themselves the next time you save anything. Changes go live in a few minutes after you press Save.
         type: object
-        list: true
+        list: { max: 12 }
         fields:
           - { name: title, label: Title, type: string, required: true, options: { maxlength: 60 } }
           - { name: date, label: Date, type: date, required: true, options: { format: "yyyy-MM-dd" } }
           - { name: time, label: Time (e.g. 10AM – 12PM), type: string, options: { maxlength: 30 } }
-          - { name: image, label: Image, type: image, required: true }
+          - { name: image, label: Image, description: A landscape photo works best., type: image, required: true }
           - { name: imageAlt, label: Describe the image in a sentence, type: string, required: true, options: { maxlength: 125 } }
           - { name: description, label: Description, type: text, required: true, options: { maxlength: 400 } }
