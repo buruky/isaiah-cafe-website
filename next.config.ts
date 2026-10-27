@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
   // Client admin lives on Pages CMS (see .pages.yml); /admin is just a memorable shortcut.
   async redirects() {
     return [
-      { source: "/admin", destination: "https://app.pagescms.org", permanent: false },
+      { source: "/admin", destination: "https://app.pagescms.org/buruky/isaiah-cafe-website/main", permanent: false },
     ];
   },
 };
