@@ -23,8 +23,8 @@ export default function EventsPage() {
       <Hero
         heading="Events"
         body="Gatherings, tastings and community happenings at Isaiah Café."
-        image="/assets/hero-about.jpg"
-        imageAlt="Inside Isaiah Café"
+        image="/assets/hero-home.jpg"
+        imageAlt="A barista making an iced drink at the espresso machine in Isaiah Café"
         size="medium"
       />
 

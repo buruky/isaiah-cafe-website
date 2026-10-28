@@ -12,6 +12,7 @@ import homeHero from "@/content/home-hero.json";
 import eventsFile from "@/content/events.json";
 import homePhotos from "@/content/home-photos.json";
 import menuFile from "@/content/menu.json";
+import teamFile from "@/content/team.json";
 
 export type CafeEvent = (typeof eventsFile.events)[number];
 export const EVENTS: CafeEvent[] = eventsFile.events;
@@ -27,6 +28,22 @@ export type TeamMember = {
   bio: string;
   /** *asterisks* mark italics (titles of works) */
   funFact?: string;
+  /** favourite menu item; hidden when blank */
+  favorite?: string;
+};
+
+// Crew name, photo, bio and favourite are client-editable (src/content/team.json).
+// Titles and photo framing stay locked here: titles follow the name, so a new hire
+// doesn't inherit someone else's; framing follows the photo, so a new upload is centred.
+const CREW_TITLES: Record<string, string> = {
+  Bini: "The Coffee Master",
+  Jayme: "Barista & Baker",
+  Paige: "Barista",
+};
+const CREW_FOCAL: Record<string, string> = {
+  "/assets/uploads/team-bini.jpg": "55% 50%",
+  "/assets/uploads/team-jayme.jpg": "64% 50%",
+  "/assets/uploads/team-paige.jpg": "30% 40%",
 };
 
 export const HOME = {
@@ -215,6 +232,7 @@ export const ABOUT = {
         bio: "Simret is the powerhouse behind Isaiah Café — an energetic \u201Coctopus\u201D who can juggle a dozen tasks at once and still bring joy, clarity, and momentum to the team. Her creativity, resilience, and ability to keep the café moving forward make her an essential part of our heartbeat and growth.",
         funFact:
           "Simret is the author of *Beyond Grief*, a book that reflects her strength, compassion, and ability to turn life's hardest moments into purpose.",
+        favorite: "Gluten-free chicken sandwich",
       },
       {
         name: "Semhar",
@@ -225,35 +243,17 @@ export const ABOUT = {
         bio: "Semhar is the steady, joyful force behind Isaiah Café's daily rhythm. As co-owner, she brings exceptional management skills, calm leadership, and a gift for keeping the team organized, supported, and thriving. Her ability to balance structure with warmth makes the café feel both professional and deeply welcoming.",
         funFact:
           "Semhar is a huge *Top Gun* fan — her love for the movie matches her leadership style: focused, fearless, and always ready to lift the team higher.",
+        favorite: "London fog",
       },
     ] as TeamMember[],
     crewTitle: "Behind the Bar",
-    crew: [
-      {
-        name: "Bini",
-        title: "The Coffee Master",
-        image: "/assets/team-bini.jpg",
-        alt: "Bini pouring latte art into an Aggüdo cup behind the bar",
-        focal: "55% 50%",
-        bio: "Bini has crafted over 45,000 cups of coffee — enough to fill a small swimming pool. With that kind of experience, he can spot a bad espresso shot from across the room. His precision, speed, and passion make every cup at Isaiah Café taste like it was made just for you.",
-      },
-      {
-        name: "Jayme",
-        title: "Barista & Baker",
-        image: "/assets/team-jayme.jpg",
-        alt: "Jayme glazing a tray of croissants in the café kitchen",
-        focal: "64% 50%",
-        bio: "Jayme brings excellence, energy, and artistry to every cup and pastry she makes. A dedicated UCalgary student and a talented dance teacher, she moves through the café with the same rhythm and precision she brings to the studio. Her commitment to quality shows in every latte, every interaction, and every moment she spends making Isaiah Café shine.",
-      },
-      {
-        name: "Paige",
-        title: "Barista",
-        image: "/assets/team-paige.jpg",
-        alt: "Paige steaming milk at the espresso machine",
-        focal: "65% 25%",
-        bio: "Paige is one of Isaiah Café's strongest baristas, known for her high energy, warm customer care, and consistently excellent service. She brings confidence, speed, and positivity to every shift, creating the kind of welcoming experience that keeps guests coming back.",
-      },
-    ] as TeamMember[],
+    crew: teamFile.crew.map(
+      (m): TeamMember => ({
+        ...m,
+        title: CREW_TITLES[m.name],
+        focal: CREW_FOCAL[m.image] ?? "50% 35%",
+      }),
+    ),
   },
   values: {
     title: "What We Stand For",

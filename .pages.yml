@@ -85,6 +85,23 @@ content:
           - { name: footnote, label: Note under the list (optional, e.g. Alt milk available), type: string, options: { maxlength: 80 } }
       - { name: note, label: Note at the bottom of the menu, type: string, required: true, options: { maxlength: 160 } }
 
+  - name: team
+    label: About – Team (Behind the Bar)
+    type: file
+    path: src/content/team.json
+    fields:
+      - name: crew
+        label: Team members
+        description: The three people under “Behind the Bar” on the About page. The owners are changed by your web developer. Changes go live in a few minutes after you press Save.
+        type: object
+        list: { min: 3, max: 3 }
+        fields:
+          - { name: name, label: Name, type: string, required: true, options: { maxlength: 30 } }
+          - { name: image, label: Photo, description: A portrait (tall) photo with the person near the middle works best., type: image, required: true }
+          - { name: alt, label: Describe the photo in a sentence (for blind visitors and Google), type: string, required: true, options: { maxlength: 125 } }
+          - { name: bio, label: Description, type: text, required: true, options: { maxlength: 450 } }
+          - { name: favorite, label: Favourite menu item (optional), description: Leave blank to hide it., type: string, options: { maxlength: 50 } }
+
   - name: events
     label: Events
     type: file
