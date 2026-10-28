@@ -64,6 +64,12 @@ export const HOME = {
       image: string;
       hidden?: boolean;
     }>,
+    // Must match the Square Online fulfillment settings (delivery radius/minimum, shipping rate profile).
+    ordering: [
+      { title: "Pickup", body: "Free, in store at 101 19 St NW." },
+      { title: "Local delivery", body: "Always free within 10 km. Up to 30 km: $10, or free on orders of $100 or more." },
+      { title: "Shipping", body: "Anywhere in Canada and the US, from $25 depending on order total." },
+    ],
   },
   features: [
     {
