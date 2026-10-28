@@ -59,6 +59,32 @@ content:
           - { name: image, label: Photo, description: Shown dimmed behind the text — a wide photo works best., type: image, required: true }
           - { name: imageAlt, label: Describe the photo in a sentence (for blind visitors and Google), type: string, required: true, options: { maxlength: 125 } }
 
+  - name: menu
+    label: Menu
+    type: file
+    path: src/content/menu.json
+    fields:
+      - name: sections
+        label: Menu sections
+        description: Each section is one block on the Menu page (photo + list). Drag to reorder. Changes go live in a few minutes after you press Save.
+        type: object
+        list: { min: 1, max: 8 }
+        fields:
+          - { name: title, label: Section title (e.g. Espresso), type: string, required: true, options: { maxlength: 30 } }
+          - { name: eyebrow, label: Small line above the title (e.g. From the bar), type: string, required: true, options: { maxlength: 30 } }
+          - { name: image, label: Photo, description: A portrait (tall) photo works best., type: image, required: true }
+          - { name: imageAlt, label: Describe the photo in a sentence (for blind visitors and Google), type: string, required: true, options: { maxlength: 125 } }
+          - name: items
+            label: Items
+            type: object
+            list: { min: 1, max: 40 }
+            fields:
+              - { name: name, label: Name, type: string, required: true, options: { maxlength: 40 } }
+              - { name: options, label: Flavours or choices (optional), description: "Shown in small text under the name, e.g. Blueberry · Banana chip", type: string, options: { maxlength: 160 } }
+              - { name: heading, label: Show as a small sub-heading instead of an item, type: boolean }
+          - { name: footnote, label: Note under the list (optional, e.g. Alt milk available), type: string, options: { maxlength: 80 } }
+      - { name: note, label: Note at the bottom of the menu, type: string, required: true, options: { maxlength: 160 } }
+
   - name: events
     label: Events
     type: file

@@ -11,6 +11,7 @@
 import homeHero from "@/content/home-hero.json";
 import eventsFile from "@/content/events.json";
 import homePhotos from "@/content/home-photos.json";
+import menuFile from "@/content/menu.json";
 
 export type CafeEvent = (typeof eventsFile.events)[number];
 export const EVENTS: CafeEvent[] = eventsFile.events;
@@ -345,79 +346,14 @@ export const MENU = {
     image: "/assets/hero-menu.jpg",
     imageAlt: "The pastry display case at Isaiah Café",
   },
-  note: "Our menu changes with the season — visit us for current offerings and prices.",
-  sections: [
-    {
-      id: "espresso",
-      eyebrow: "From the bar",
-      title: "Espresso",
-      image: "/assets/menu-espresso.jpg",
-      imageAlt: "A double espresso pulling into shot glasses",
-      items: [
-        { name: "Drip coffee" },
-        { name: "Latte" },
-        { name: "Cappuccino" },
-        { name: "Americano" },
-        { name: "Americano misto" },
-        { name: "Cortado" },
-        { name: "Macchiato" },
-        { name: "Mocha" },
-        { name: "Caramel macchiato" },
-        { name: "Cold brew" },
-        { name: "Honey cortado" },
-        { name: "Nutella latte" },
-      ],
-    },
-    {
-      id: "non-espresso",
-      eyebrow: "Tea & more",
-      title: "Non-Espresso",
-      image: "/assets/menu-non-espresso.jpg",
-      imageAlt: "A latte on a sunlit table at Isaiah Café",
-      items: [
-        { name: "Matcha latte" },
-        { name: "Chai latte" },
-        { name: "London fog" },
-        {
-          name: "Iced tea",
-          options: "Strawberry · Cherry plum · Blackberry · Vanilla",
-        },
-        {
-          name: "Tea",
-          options:
-            "Earl grey · Peppermint · English breakfast · Chai · Rooibos · Mango · Lemon · Lavender · Green tea",
-        },
-        { name: "Tea misto" },
-        {
-          name: "Hot chocolate",
-          options: "Also available as white hot chocolate",
-        },
-      ],
-      footnote: "Alt milk available",
-    },
-    {
-      id: "food",
-      eyebrow: "Made fresh in house",
-      title: "Food",
-      image: "/assets/menu-food.jpg",
-      imageAlt: "A breakfast bagel sandwich plated at Isaiah Café",
-      items: [
-        { group: "Croissant sandwiches" },
-        { name: "Egg and veggie" },
-        { name: "Bacon and egg" },
-        { name: "Turkey and egg" },
-        { name: "BLT" },
-        { group: "Bakery & more" },
-        { name: "Chicken sandwich" },
-        { name: "Salmon and egg bagel" },
-        { name: "Cinnamon bun" },
-        { name: "Almond croissant" },
-        { name: "Chocolate chip cookie" },
-        {
-          name: "Muffins",
-          options: "Banana chip · Blueberry · Apple cinnamon",
-        },
-      ],
-    },
-  ],
+  // Client-editable via Pages CMS (.pages.yml).
+  note: menuFile.note,
+  sections: menuFile.sections.map((section) => ({
+    ...section,
+    // Anchor id from the title, so renaming a section in the admin can't leave a stale one.
+    id: section.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""),
+    items: section.items.map((item: { name: string; options?: string; heading?: boolean }) =>
+      item.heading ? { group: item.name } : { name: item.name, options: item.options },
+    ),
+  })),
 };

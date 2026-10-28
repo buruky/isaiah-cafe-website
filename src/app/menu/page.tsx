@@ -42,7 +42,7 @@ export default function MenuPage() {
             image={section.image}
             imageAlt={section.imageAlt}
             items={section.items}
-            footnote={"footnote" in section ? section.footnote : undefined}
+            footnote={section.footnote}
             flip={i % 2 === 1}
           />
         ))}

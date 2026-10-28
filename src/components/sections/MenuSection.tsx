@@ -68,7 +68,7 @@ export default function MenuSection({
                   <h3 className="eyebrow text-bronze">{item.group}</h3>
                 </li>
               ) : (
-                <li key={item.name} className="py-4">
+                <li key={`i-${i}`} className="py-4">
                   <span className="text-lg text-walnut">{item.name}</span>
                   {item.options && (
                     <span className="mt-1 block text-sm leading-relaxed text-walnut-soft/80">
