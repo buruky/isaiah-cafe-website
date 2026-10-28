@@ -9,6 +9,8 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/admin", destination: "https://app.pagescms.org/buruky/isaiah-cafe-website/main", permanent: false },
+      // Target of the printed QR codes. Change the destination, never the source: the codes are already printed.
+      { source: "/qr", destination: "/?utm_source=qr&utm_medium=print", permanent: false },
     ];
   },
 };

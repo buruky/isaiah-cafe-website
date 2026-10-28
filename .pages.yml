@@ -100,7 +100,7 @@ content:
           - { name: image, label: Photo, description: A portrait (tall) photo with the person near the middle works best., type: image, required: true }
           - { name: alt, label: Describe the photo in a sentence (for blind visitors and Google), type: string, required: true, options: { maxlength: 125 } }
           - { name: bio, label: Description, type: text, required: true, options: { maxlength: 450 } }
-          - { name: favorite, label: Favourite menu item (optional), description: Leave blank to hide it., type: string, options: { maxlength: 50 } }
+          - { name: favorite, label: Favourite menu item (optional), description: Leave blank to hide it., type: string, options: { maxlength: 80 } }
 
   - name: events
     label: Events
