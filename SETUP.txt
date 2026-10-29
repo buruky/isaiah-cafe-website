@@ -32,7 +32,23 @@ WHERE THINGS LIVE
   src/app/globals.css    Colours, fonts and other design tokens.
   public/assets/         Images, logo and the home-page hero video.
 
-Pages: /  /about  /menu  /catering  /contact  /privacy
+Pages: /  /about  /menu  /catering  /events  /contact  /privacy
+
+
+CLIENT ADMIN (PAGES CMS)
+------------------------
+The client edits the home banner and the events list at yoursite.com/admin
+(redirects to Pages CMS). .pages.yml decides what they can edit; everything
+else stays locked in code. Their edits are saved as commits to main, and
+Cloudflare redeploys within a few minutes.
+
+- Invite the client from Pages CMS -> Settings -> Collaborators, by email.
+  Do NOT add them as a GitHub collaborator: that would let them edit any
+  file in the repo, not only the admin fields.
+- Their uploads go to public/assets/uploads/. The site's own images and
+  video are kept outside that folder so the client can't delete them.
+- If an edit breaks the build, Cloudflare keeps the last working version
+  live. Fix or revert the commit on GitHub.
 
 
 CONTACT & NEWSLETTER FORMS

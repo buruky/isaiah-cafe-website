@@ -1,0 +1,121 @@
+# Pages CMS config (https://pagescms.org/docs). Defines what the client can edit.
+# Anything not listed here (video, logo, layout, colours, nav) is locked in code.
+media:
+  # Own folder so the media manager can't delete or replace the site's built-in images/video.
+  input: public/assets/uploads
+  output: /assets/uploads
+  extensions: [jpg, jpeg, png, webp]
+
+content:
+  - name: home-hero
+    label: Home – Top Banner
+    type: file
+    path: src/content/home-hero.json
+    fields:
+      - name: heading
+        label: Heading
+        description: The big title at the top of the home page.
+        type: string
+        required: true
+        options: { maxlength: 40 }
+      - name: body
+        label: Intro text
+        description: One or two short sentences under the title.
+        type: text
+        required: true
+        options: { maxlength: 220 }
+      - name: image
+        label: Image (shown if the video can't play)
+        description: A wide (landscape) photo works best.
+        type: image
+        required: true
+      - name: imageAlt
+        label: Describe the image in a sentence (for blind visitors and Google)
+        type: string
+        required: true
+        options: { maxlength: 125 }
+
+  - name: home-photos
+    label: Home – Photos
+    type: file
+    path: src/content/home-photos.json
+    fields:
+      - name: catering
+        label: Catering section (“Catering by Isaiah Café”)
+        type: object
+        fields:
+          - { name: image, label: Photo, description: A slightly wide (landscape) photo works best., type: image, required: true }
+          - { name: imageAlt, label: Describe the photo in a sentence (for blind visitors and Google), type: string, required: true, options: { maxlength: 125 } }
+      - name: coffee
+        label: Coffee beans section (“Take Home”)
+        type: object
+        fields:
+          - { name: image, label: Photo, description: A slightly wide (landscape) photo works best., type: image, required: true }
+          - { name: imageAlt, label: Describe the photo in a sentence (for blind visitors and Google), type: string, required: true, options: { maxlength: 125 } }
+      - name: story
+        label: Our Story section (“Born from a dream”)
+        type: object
+        fields:
+          - { name: image, label: Photo, description: Shown dimmed behind the text — a wide photo works best., type: image, required: true }
+          - { name: imageAlt, label: Describe the photo in a sentence (for blind visitors and Google), type: string, required: true, options: { maxlength: 125 } }
+
+  - name: menu
+    label: Menu
+    type: file
+    path: src/content/menu.json
+    fields:
+      - name: sections
+        label: Menu sections
+        description: Each section is one block on the Menu page (photo + list). Drag to reorder. Changes go live in a few minutes after you press Save.
+        type: object
+        list: { min: 1, max: 8 }
+        fields:
+          - { name: title, label: Section title (e.g. Espresso), type: string, required: true, options: { maxlength: 30 } }
+          - { name: eyebrow, label: Small line above the title (e.g. From the bar), type: string, required: true, options: { maxlength: 30 } }
+          - { name: image, label: Photo, description: A portrait (tall) photo works best., type: image, required: true }
+          - { name: imageAlt, label: Describe the photo in a sentence (for blind visitors and Google), type: string, required: true, options: { maxlength: 125 } }
+          - name: items
+            label: Items
+            type: object
+            list: { min: 1, max: 40 }
+            fields:
+              - { name: name, label: Name, type: string, required: true, options: { maxlength: 40 } }
+              - { name: options, label: Flavours or choices (optional), description: "Shown in small text under the name, e.g. Blueberry · Banana chip", type: string, options: { maxlength: 160 } }
+              - { name: heading, label: Show as a small sub-heading instead of an item, type: boolean }
+          - { name: footnote, label: Note under the list (optional, e.g. Alt milk available), type: string, options: { maxlength: 80 } }
+      - { name: note, label: Note at the bottom of the menu, type: string, required: true, options: { maxlength: 160 } }
+
+  - name: team
+    label: About – Team (Behind the Bar)
+    type: file
+    path: src/content/team.json
+    fields:
+      - name: crew
+        label: Team members
+        description: The three people under “Behind the Bar” on the About page. The owners are changed by your web developer. Changes go live in a few minutes after you press Save.
+        type: object
+        list: { min: 3, max: 3 }
+        fields:
+          - { name: name, label: Name, type: string, required: true, options: { maxlength: 30 } }
+          - { name: image, label: Photo, description: A portrait (tall) photo with the person near the middle works best., type: image, required: true }
+          - { name: alt, label: Describe the photo in a sentence (for blind visitors and Google), type: string, required: true, options: { maxlength: 125 } }
+          - { name: bio, label: Description, type: text, required: true, options: { maxlength: 450 } }
+          - { name: favorite, label: Favourite menu item (optional), description: Leave blank to hide it., type: string, options: { maxlength: 80 } }
+
+  - name: events
+    label: Events
+    type: file
+    path: src/content/events.json
+    fields:
+      - name: events
+        label: Events
+        description: Past events hide themselves the next time you save anything. Changes go live in a few minutes after you press Save.
+        type: object
+        list: { max: 12 }
+        fields:
+          - { name: title, label: Title, type: string, required: true, options: { maxlength: 60 } }
+          - { name: date, label: Date, type: date, required: true, options: { format: "yyyy-MM-dd" } }
+          - { name: time, label: Time (e.g. 10AM – 12PM), type: string, options: { maxlength: 30 } }
+          - { name: image, label: Image, description: A landscape photo works best., type: image, required: true }
+          - { name: imageAlt, label: Describe the image in a sentence, type: string, required: true, options: { maxlength: 125 } }
+          - { name: description, label: Description, type: text, required: true, options: { maxlength: 400 } }

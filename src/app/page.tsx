@@ -6,6 +6,7 @@ import StorySnippet from "@/components/sections/StorySnippet";
 import Newsletter from "@/components/sections/Newsletter";
 import Button from "@/components/ui/Button";
 import { HOME } from "@/lib/content";
+import { SITE } from "@/lib/site";
 
 export default function HomePage() {
   return (
@@ -21,7 +22,16 @@ export default function HomePage() {
         size="full"
         zoom
       >
-        <Button href="/catering" variant="solid" tone="light">
+        <Button
+          href={SITE.orderUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="solid"
+          tone="light"
+        >
+          Order Online
+        </Button>
+        <Button href="/catering" variant="outline" tone="light">
           Catering
         </Button>
         <Button href="/about" variant="outline" tone="light">

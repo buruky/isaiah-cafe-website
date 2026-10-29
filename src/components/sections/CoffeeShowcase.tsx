@@ -14,7 +14,7 @@ const GRID_COLS: Record<number, string> = {
 };
 
 export default function CoffeeShowcase() {
-  const { eyebrow, title, subtext, beans } = HOME.coffee;
+  const { eyebrow, title, subtext, beans, ordering } = HOME.coffee;
   const visible = beans.filter((bean) => !bean.hidden);
   const cols = GRID_COLS[visible.length] ?? "grid-cols-2 lg:grid-cols-5";
 
@@ -50,8 +50,16 @@ export default function CoffeeShowcase() {
           <p className="text-sm tracking-wide text-walnut-soft">
             Roasted by{" "}
             <span className="font-semibold text-bronze-deep">Aggüdo Coffee</span> in
-            Calgary · available in-store
+            Calgary · available in-store, for delivery and shipping
           </p>
+          <dl className="mx-auto mt-8 grid max-w-3xl gap-6 text-sm sm:grid-cols-3">
+            {ordering.map((rule) => (
+              <div key={rule.title}>
+                <dt className="text-xs uppercase tracking-[0.14em] text-bronze-deep">{rule.title}</dt>
+                <dd className="mt-2 leading-relaxed text-walnut-soft">{rule.body}</dd>
+              </div>
+            ))}
+          </dl>
         </Reveal>
       </div>
     </section>

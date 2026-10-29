@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import Logo from "@/components/ui/Logo";
-import { NAV_LINKS } from "@/lib/site";
+import { NAV_LINKS, SITE } from "@/lib/site";
 
 export default function Header() {
   const pathname = usePathname();
@@ -62,6 +62,16 @@ export default function Header() {
           {NAV_LINKS.slice(split).map((link) => (
             <NavLink key={link.href} {...link} active={isActive(link.href)} />
           ))}
+          {SITE.orderUrl && (
+            <a
+              href={SITE.orderUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full bg-walnut px-5 py-2 text-sm font-semibold tracking-wide text-cream transition-colors hover:bg-espresso"
+            >
+              Order Online
+            </a>
+          )}
         </div>
 
         {/* Mobile toggle */}
@@ -100,6 +110,18 @@ export default function Header() {
               </Link>
             </li>
           ))}
+          {SITE.orderUrl && (
+            <li>
+              <a
+                href={SITE.orderUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 block rounded-full bg-walnut py-4 text-center text-lg font-semibold text-cream"
+              >
+                Order Online
+              </a>
+            </li>
+          )}
         </ul>
       </div>
     </header>

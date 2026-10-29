@@ -8,6 +8,15 @@
  * it is hand-ticked per bag, not printed. Presented informationally, no CTAs.
  */
 
+import homeHero from "@/content/home-hero.json";
+import eventsFile from "@/content/events.json";
+import homePhotos from "@/content/home-photos.json";
+import menuFile from "@/content/menu.json";
+import teamFile from "@/content/team.json";
+
+export type CafeEvent = (typeof eventsFile.events)[number];
+export const EVENTS: CafeEvent[] = eventsFile.events;
+
 /** A person on the About-page roster. `title` and `funFact` are optional. */
 export type TeamMember = {
   name: string;
@@ -19,15 +28,30 @@ export type TeamMember = {
   bio: string;
   /** *asterisks* mark italics (titles of works) */
   funFact?: string;
+  /** favourite menu item; hidden when blank */
+  favorite?: string;
+};
+
+// Crew name, photo, bio and favourite are client-editable (src/content/team.json).
+// Titles and photo framing stay locked here: titles follow the name, so a new hire
+// doesn't inherit someone else's; framing follows the photo, so a new upload is centred.
+const CREW_TITLES: Record<string, string> = {
+  Bini: "The Coffee Master",
+  Jayme: "Barista & Baker",
+  Paige: "Barista",
+};
+const CREW_FOCAL: Record<string, string> = {
+  "/assets/uploads/team-bini.jpg": "55% 50%",
+  "/assets/uploads/team-jayme.jpg": "64% 50%",
+  "/assets/uploads/team-paige.jpg": "30% 40%",
 };
 
 export const HOME = {
   hero: {
+    // Client-editable via Pages CMS (.pages.yml).
+    ...homeHero,
+    // Locked: brand pieces the client shouldn't change from the admin.
     eyebrow: "community · culture · quality",
-    heading: "Isaiah Café",
-    body: "Calgary's newest breakfast and bakery destination — a place where every morning starts with a warm welcome, exceptional coffee and great food.",
-    image: "/assets/hero-home.jpg",
-    imageAlt: "Barista pulling espresso at the Isaiah Café counter in Calgary",
     video: "/assets/hero-home.mp4",
     videoPoster: "/assets/hero-home-poster.jpg",
   },
@@ -58,14 +82,19 @@ export const HOME = {
       image: string;
       hidden?: boolean;
     }>,
+    // Must match the Square Online fulfillment settings (delivery radius/minimum, shipping rate profile).
+    ordering: [
+      { title: "Pickup", body: "Free, in store at 101 19 St NW." },
+      { title: "Local delivery", body: "Always free within 10 km. Up to 30 km: $10, or free on orders of $100 or more." },
+      { title: "Shipping", body: "Anywhere in Canada and the US, from $25 depending on order total." },
+    ],
   },
   features: [
     {
       eyebrow: "Events & Gatherings",
       heading: "Catering by Isaiah Café",
       body: "From intimate brunches to large corporate events — we bring the Isaiah Café experience to you. Fresh food, specialty coffee, and flawless service.",
-      image: "/assets/home-catering.jpg",
-      imageAlt: "Tray of freshly baked cinnamon rolls at Isaiah Café",
+      ...homePhotos.catering, // client-editable via Pages CMS
       imagePosition: "left" as const,
       cta: { label: "Learn More", href: "/catering" },
     },
@@ -73,8 +102,7 @@ export const HOME = {
       eyebrow: "Take Home",
       heading: "Aggüdo Coffee Beans",
       body: "We proudly serve and pour Aggüdo Coffee — locally roasted in Calgary, with blends ranging from light cold brew to dark espresso roasts.",
-      image: "/assets/home-coffee.jpg",
-      imageAlt: "Espresso pulling into shot glasses at Isaiah Café",
+      ...homePhotos.coffee, // client-editable via Pages CMS
       imagePosition: "right" as const,
       cta: { label: "Our Story", href: "/about" },
     },
@@ -84,8 +112,7 @@ export const HOME = {
     heading: "Born from a dream",
     body: "Isaiah Café was born from a dream — a legacy of compassion, community, and genuine care for people. Every cup we serve carries that story forward.",
     cta: { label: "Read Our Story", href: "/about" },
-    image: "/assets/home-story.jpg",
-    imageAlt: "The counter and espresso bar inside Isaiah Café",
+    ...homePhotos.story, // client-editable via Pages CMS
   },
   newsletter: {
     heading: "Stay in the Loop",
@@ -205,6 +232,7 @@ export const ABOUT = {
         bio: "Simret is the powerhouse behind Isaiah Café — an energetic \u201Coctopus\u201D who can juggle a dozen tasks at once and still bring joy, clarity, and momentum to the team. Her creativity, resilience, and ability to keep the café moving forward make her an essential part of our heartbeat and growth.",
         funFact:
           "Simret is the author of *Beyond Grief*, a book that reflects her strength, compassion, and ability to turn life's hardest moments into purpose.",
+        favorite: "Gluten-free chicken sandwich",
       },
       {
         name: "Semhar",
@@ -215,35 +243,17 @@ export const ABOUT = {
         bio: "Semhar is the steady, joyful force behind Isaiah Café's daily rhythm. As co-owner, she brings exceptional management skills, calm leadership, and a gift for keeping the team organized, supported, and thriving. Her ability to balance structure with warmth makes the café feel both professional and deeply welcoming.",
         funFact:
           "Semhar is a huge *Top Gun* fan — her love for the movie matches her leadership style: focused, fearless, and always ready to lift the team higher.",
+        favorite: "London fog",
       },
     ] as TeamMember[],
     crewTitle: "Behind the Bar",
-    crew: [
-      {
-        name: "Bini",
-        title: "The Coffee Master",
-        image: "/assets/team-bini.jpg",
-        alt: "Bini pouring latte art into an Aggüdo cup behind the bar",
-        focal: "55% 50%",
-        bio: "Bini has crafted over 45,000 cups of coffee — enough to fill a small swimming pool. With that kind of experience, he can spot a bad espresso shot from across the room. His precision, speed, and passion make every cup at Isaiah Café taste like it was made just for you.",
-      },
-      {
-        name: "Jayme",
-        title: "Barista & Baker",
-        image: "/assets/team-jayme.jpg",
-        alt: "Jayme glazing a tray of croissants in the café kitchen",
-        focal: "64% 50%",
-        bio: "Jayme brings excellence, energy, and artistry to every cup and pastry she makes. A dedicated UCalgary student and a talented dance teacher, she moves through the café with the same rhythm and precision she brings to the studio. Her commitment to quality shows in every latte, every interaction, and every moment she spends making Isaiah Café shine.",
-      },
-      {
-        name: "Paige",
-        title: "Barista",
-        image: "/assets/team-paige.jpg",
-        alt: "Paige steaming milk at the espresso machine",
-        focal: "65% 25%",
-        bio: "Paige is one of Isaiah Café's strongest baristas, known for her high energy, warm customer care, and consistently excellent service. She brings confidence, speed, and positivity to every shift, creating the kind of welcoming experience that keeps guests coming back.",
-      },
-    ] as TeamMember[],
+    crew: teamFile.crew.map(
+      (m): TeamMember => ({
+        ...m,
+        title: CREW_TITLES[m.name],
+        focal: CREW_FOCAL[m.image] ?? "50% 35%",
+      }),
+    ),
   },
   values: {
     title: "What We Stand For",
@@ -336,79 +346,14 @@ export const MENU = {
     image: "/assets/hero-menu.jpg",
     imageAlt: "The pastry display case at Isaiah Café",
   },
-  note: "Our menu changes with the season — visit us for current offerings and prices.",
-  sections: [
-    {
-      id: "espresso",
-      eyebrow: "From the bar",
-      title: "Espresso",
-      image: "/assets/menu-espresso.jpg",
-      imageAlt: "A double espresso pulling into shot glasses",
-      items: [
-        { name: "Drip coffee" },
-        { name: "Latte" },
-        { name: "Cappuccino" },
-        { name: "Americano" },
-        { name: "Americano misto" },
-        { name: "Cortado" },
-        { name: "Macchiato" },
-        { name: "Mocha" },
-        { name: "Caramel macchiato" },
-        { name: "Cold brew" },
-        { name: "Honey cortado" },
-        { name: "Nutella latte" },
-      ],
-    },
-    {
-      id: "non-espresso",
-      eyebrow: "Tea & more",
-      title: "Non-Espresso",
-      image: "/assets/menu-non-espresso.jpg",
-      imageAlt: "A latte on a sunlit table at Isaiah Café",
-      items: [
-        { name: "Matcha latte" },
-        { name: "Chai latte" },
-        { name: "London fog" },
-        {
-          name: "Iced tea",
-          options: "Strawberry · Cherry plum · Blackberry · Vanilla",
-        },
-        {
-          name: "Tea",
-          options:
-            "Earl grey · Peppermint · English breakfast · Chai · Rooibos · Mango · Lemon · Lavender · Green tea",
-        },
-        { name: "Tea misto" },
-        {
-          name: "Hot chocolate",
-          options: "Also available as white hot chocolate",
-        },
-      ],
-      footnote: "Alt milk available",
-    },
-    {
-      id: "food",
-      eyebrow: "Made fresh in house",
-      title: "Food",
-      image: "/assets/menu-food.jpg",
-      imageAlt: "A breakfast bagel sandwich plated at Isaiah Café",
-      items: [
-        { group: "Croissant sandwiches" },
-        { name: "Egg and veggie" },
-        { name: "Bacon and egg" },
-        { name: "Turkey and egg" },
-        { name: "BLT" },
-        { group: "Bakery & more" },
-        { name: "Chicken sandwich" },
-        { name: "Salmon and egg bagel" },
-        { name: "Cinnamon bun" },
-        { name: "Almond croissant" },
-        { name: "Chocolate chip cookie" },
-        {
-          name: "Muffins",
-          options: "Banana chip · Blueberry · Apple cinnamon",
-        },
-      ],
-    },
-  ],
+  // Client-editable via Pages CMS (.pages.yml).
+  note: menuFile.note,
+  sections: menuFile.sections.map((section) => ({
+    ...section,
+    // Anchor id from the title, so renaming a section in the admin can't leave a stale one.
+    id: section.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""),
+    items: section.items.map((item: { name: string; options?: string; heading?: boolean }) =>
+      item.heading ? { group: item.name } : { name: item.name, options: item.options },
+    ),
+  })),
 };

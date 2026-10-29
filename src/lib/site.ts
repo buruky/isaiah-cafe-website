@@ -16,6 +16,8 @@ export const SITE = {
   email: "hello@isaiahcafe.com",
   phone: "403.816.8159",
   phoneE164: "+14038168159",
+  // Square Online ordering page (pickup, delivery, shipping). Order buttons stay hidden while blank.
+  orderUrl: "https://isaiahcafe.square.site/",
   address: {
     street: "101 19th Street NW",
     locality: "Calgary",
@@ -30,6 +32,7 @@ export const SITE = {
   hours: [
     { days: "Mon – Fri", time: "7AM – 6PM" },
     { days: "Sat – Sun", time: "8AM – 6PM" },
+    { days: "Stat Holidays", time: "8AM – 4PM" },
   ],
   social: {
     // Confirmed handle from theme settings_data.json
@@ -46,6 +49,7 @@ export const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Menu", href: "/menu" },
   { label: "Catering", href: "/catering" },
+  { label: "Events", href: "/events" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ] as const;

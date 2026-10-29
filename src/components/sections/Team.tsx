@@ -44,6 +44,15 @@ function FunFact({ text }: { text: string }) {
   );
 }
 
+function Favorite({ item }: { item: string }) {
+  return (
+    <p className="mt-5 text-sm text-walnut-soft">
+      <span className="eyebrow mr-2 text-bronze-deep">Favourite menu item</span>
+      {item}
+    </p>
+  );
+}
+
 export default function Team() {
   const { title, leadership, crewTitle, crew } = ABOUT.team;
 
@@ -67,6 +76,7 @@ export default function Team() {
                 <p className="mt-5 text-sm leading-relaxed text-walnut-soft">
                   {m.bio}
                 </p>
+                {m.favorite && <Favorite item={m.favorite} />}
                 {m.funFact && <FunFact text={m.funFact} />}
               </div>
             </Reveal>
@@ -101,6 +111,7 @@ export default function Team() {
                   <p className="mt-4 text-sm leading-relaxed text-walnut-soft">
                     {m.bio}
                   </p>
+                  {m.favorite && <Favorite item={m.favorite} />}
                   {m.funFact && <FunFact text={m.funFact} />}
                 </div>
               </Reveal>
