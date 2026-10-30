@@ -1,63 +1,158 @@
 {
-  "note": "Our menu changes with the season — visit us for current offerings and prices.",
   "sections": [
     {
-      "eyebrow": "From the bar",
       "title": "Espresso",
+      "eyebrow": "From the bar",
       "image": "/assets/uploads/menu-espresso.jpg",
       "imageAlt": "A double espresso pulling into shot glasses",
-      "footnote": "",
       "items": [
-        { "name": "Drip coffee" },
-        { "name": "Latte" },
-        { "name": "Cappuccino" },
-        { "name": "Americano" },
-        { "name": "Americano misto" },
-        { "name": "Cortado" },
-        { "name": "Macchiato" },
-        { "name": "Mocha" },
-        { "name": "Caramel macchiato" },
-        { "name": "Cold brew" },
-        { "name": "Honey cortado" },
-        { "name": "Nutella latte" }
+        {
+          "name": "Drip coffee",
+          "heading": false
+        },
+        {
+          "name": "Latte",
+          "heading": false
+        },
+        {
+          "name": "Cappuccino",
+          "heading": false
+        },
+        {
+          "name": "Americano",
+          "heading": false
+        },
+        {
+          "name": "Americano misto",
+          "heading": false
+        },
+        {
+          "name": "Cortado",
+          "heading": false
+        },
+        {
+          "name": "Macchiato",
+          "heading": false
+        },
+        {
+          "name": "Mocha",
+          "heading": false
+        },
+        {
+          "name": "Caramel macchiato",
+          "heading": false
+        },
+        {
+          "name": "Cold brew",
+          "heading": false
+        },
+        {
+          "name": "Honey cortado",
+          "heading": false
+        },
+        {
+          "name": "Nutella latte",
+          "heading": false
+        }
       ]
     },
     {
-      "eyebrow": "Tea & more",
       "title": "Non-Espresso",
+      "eyebrow": "Tea & more",
       "image": "/assets/uploads/menu-non-espresso.jpg",
       "imageAlt": "A latte on a sunlit table at Isaiah Café",
-      "footnote": "Alt milk available",
       "items": [
-        { "name": "Matcha latte" },
-        { "name": "Chai latte" },
-        { "name": "London fog" },
-        { "name": "Iced tea", "options": "Strawberry · Cherry plum · Blackberry · Vanilla" },
-        { "name": "Tea", "options": "Earl grey · Peppermint · English breakfast · Chai · Rooibos · Mango · Lemon · Lavender · Green tea" },
-        { "name": "Tea misto" },
-        { "name": "Hot chocolate", "options": "Also available as white hot chocolate" }
-      ]
+        {
+          "name": "Matcha latte",
+          "heading": false
+        },
+        {
+          "name": "Chai latte",
+          "heading": false
+        },
+        {
+          "name": "London fog",
+          "heading": false
+        },
+        {
+          "name": "Iced tea",
+          "options": "Strawberry · Cherry plum · Blackberry · Vanilla",
+          "heading": false
+        },
+        {
+          "name": "Tea",
+          "options": "Earl grey · Peppermint · English breakfast · Chai · Rooibos · Mango · Lemon · Lavender · Green tea",
+          "heading": false
+        },
+        {
+          "name": "Tea misto",
+          "heading": false
+        },
+        {
+          "name": "Hot chocolate",
+          "options": "Also available as white hot chocolate",
+          "heading": false
+        }
+      ],
+      "footnote": "Alt milk available"
     },
     {
-      "eyebrow": "Made fresh in house",
       "title": "Food",
-      "image": "/assets/uploads/menu-food.jpg",
-      "imageAlt": "A breakfast bagel sandwich plated at Isaiah Café",
-      "footnote": "",
+      "eyebrow": "Made fresh in house",
+      "image": "/assets/uploads/contact-cta.jpg",
+      "imageAlt": "Chicken sandwich plated at Isaiah Café",
       "items": [
-        { "name": "Croissant sandwiches", "heading": true },
-        { "name": "Egg and veggie" },
-        { "name": "Bacon and egg" },
-        { "name": "Turkey and egg" },
-        { "name": "BLT" },
-        { "name": "Bakery & more", "heading": true },
-        { "name": "Chicken sandwich" },
-        { "name": "Salmon and egg bagel" },
-        { "name": "Cinnamon bun" },
-        { "name": "Almond croissant" },
-        { "name": "Chocolate chip cookie" },
-        { "name": "Muffins", "options": "Banana chip · Blueberry · Apple cinnamon" }
+        {
+          "name": "Croissant sandwiches",
+          "heading": true
+        },
+        {
+          "name": "Egg and veggie",
+          "heading": false
+        },
+        {
+          "name": "Bacon and egg",
+          "heading": false
+        },
+        {
+          "name": "Turkey and egg",
+          "heading": false
+        },
+        {
+          "name": "BLT",
+          "heading": false
+        },
+        {
+          "name": "Bakery & more",
+          "heading": true
+        },
+        {
+          "name": "Chicken sandwich",
+          "heading": false
+        },
+        {
+          "name": "Salmon and egg bagel",
+          "heading": false
+        },
+        {
+          "name": "Cinnamon bun",
+          "heading": false
+        },
+        {
+          "name": "Almond croissant",
+          "heading": false
+        },
+        {
+          "name": "Chocolate chip cookie",
+          "heading": false
+        },
+        {
+          "name": "Muffins",
+          "options": "Banana chip · Blueberry · Apple cinnamon",
+          "heading": false
+        }
       ]
     }
-  ]
+  ],
+  "note": "Our menu changes with the season — visit us for current offerings and prices."
 }
