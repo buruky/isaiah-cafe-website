@@ -9,12 +9,12 @@
       "description": "At Isaiah Café, the Toonie Tuesday event transforms a regular Tuesday into a celebration of community and great coffee. Guests are welcomed with genuine smiles and the comforting hum of a bustling bakery, where the scent of fresh pastries mingles with the rich notes of specialty brews. The $2 coffee offer invites you to linger, chat, and make new connections "
     },
     {
-      "title": "Sample: Holiday Bake Sale",
-      "date": "2026-12-12",
-      "time": "8AM – 2PM",
-      "image": "/assets/uploads/home-story.jpg",
-      "imageAlt": "Fresh pastries at the Isaiah Café counter",
-      "description": "Sample event replace or delete this from the admin. Seasonal bakes, gift bags and coffee to take home."
+      "title": "Work & Connect Wednesdays",
+      "date": "2026-12-02",
+      "time": "2 PM - 5 PM",
+      "image": "/assets/uploads/contact-cta.jpg",
+      "imageAlt": "A productive change of Scenery",
+      "description": "Bring your laptop, notebook, or project and enjoy a cozy space to work, study, create, or connect with others in the community.\nPerfect for:\nRemote workers\nstudents\nEntrepreneurs\nCreatives\nAnyone looking for a productive cafe atmosphere "
     }
   ]
 }
