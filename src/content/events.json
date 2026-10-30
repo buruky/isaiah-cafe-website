@@ -1,12 +1,12 @@
 {
   "events": [
     {
-      "title": "Sample: Movie Night",
-      "date": "2026-11-14",
-      "time": "10AM – 12PM",
-      "image": "/assets/uploads/1d70ecbf-6fa5-47d9-9acf-1ca4a8e84061.jpg",
-      "imageAlt": "Freshly brewed Isaiah Café coffee",
-      "description": "Sample event replace or delete this from the admin. Join us for a traditional coffee ceremony featuring our Guji and Yirgacheffe beans."
+      "title": "Toonie Tuesday Coffee Celebration",
+      "date": "2026-11-03",
+      "time": "2 PM - 5 PM",
+      "image": "/assets/uploads/story-3.jpg",
+      "imageAlt": "Freshly brewed Isaiah Café drip coffee",
+      "description": "At Isaiah Café, the Toonie Tuesday event transforms a regular Tuesday into a celebration of community and great coffee. Guests are welcomed with genuine smiles and the comforting hum of a bustling bakery, where the scent of fresh pastries mingles with the rich notes of specialty brews. The $2 coffee offer invites you to linger, chat, and make new connections "
     },
     {
       "title": "Sample: Holiday Bake Sale",
